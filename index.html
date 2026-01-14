@@ -4,6 +4,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chomba Chanda | Builder & CTO</title>
+  <meta name="description" content="Software engineer and CTO based in Zambia. Building scalable products, digital infrastructure, and platforms for fintech, agribusiness, government, and commerce." />
+  <meta name="author" content="Chomba Chanda" />
+  <link rel="canonical" href="https://uncledev.site" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Chomba Chanda | Builder & CTO" />
+  <meta property="og:description" content="Software engineer and CTO based in Zambia. Building scalable products, digital infrastructure, and platforms for fintech, agribusiness, government, and commerce." />
+  <meta property="og:url" content="https://uncledev.site" />
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chomba Chanda | Builder & CTO" />
+  <meta name="twitter:description" content="Software engineer and CTO based in Zambia. Building scalable products, digital infrastructure, and platforms for fintech, agribusiness, government, and commerce." />
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Chomba Chanda",
+    "jobTitle": "CTO & Software Engineer",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "ZM"
+    },
+    "sameAs": [
+      "https://linkedin.com/in/uncledevhq"
+    ]
+  }
+  </script>
 
   <!-- Custom Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -76,6 +107,29 @@
       text-decoration: underline;
     }
 
+    .card a:focus,
+    .socials a:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--accent);
+      color: var(--bg);
+      padding: 8px 16px;
+      text-decoration: none;
+      font-weight: 600;
+      z-index: 100;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+
     .socials {
       margin-top: 40px;
       display: flex;
@@ -101,7 +155,9 @@
   </style>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <div class="container">
+    <main id="main-content">
     <h1>Chomba Chanda</h1>
     <p>
       I’m a software engineer and CTO based in Zambia.  
@@ -114,50 +170,51 @@
       <div class="card">
         <h3>PayNow</h3>
         <p>Fintech platform for collecting mobile money payments via secure payment links.</p>
-        <a href="https://usepaynow.com" target="_blank">usepaynow.com →</a>
+        <a href="https://usepaynow.com" target="_blank" rel="noopener noreferrer" aria-label="Visit PayNow website (opens in new tab)">usepaynow.com →</a>
       </div>
 
       <div class="card">
         <h3>Pictopus</h3>
         <p>Instantly find and relive your best race moments with powerful search and smart tagging.</p>
-        <a href="#" target="_blank">View project →</a>
+        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="View Pictopus project (opens in new tab)">View project →</a>
       </div>
 
       <div class="card">
         <h3>MentLoop</h3>
         <p>An innovative online platform where brilliant minds come together to learn, teach, and grow as a community.</p>
-        <a href="#" target="_blank">View project →</a>
+        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="View MentLoop project (opens in new tab)">View project →</a>
       </div>
 
       <div class="card">
         <h3>Panuka AgriBiz Hub</h3>
         <p>Digital platform supporting agribusiness operations and market access.</p>
-        <a href="https://panukaagribizhub.com" target="_blank">panukaagribizhub.com →</a>
+        <a href="https://panukaagribizhub.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Panuka AgriBiz Hub website (opens in new tab)">panukaagribizhub.com →</a>
       </div>
 
       <div class="card">
         <h3>Soltech Africa</h3>
         <p>Premium electrical, electronics, and telecommunication equipment from trusted brands.</p>
-        <a href="https://soltech.africa" target="_blank">soltech.africa →</a>
+        <a href="https://soltech.africa" target="_blank" rel="noopener noreferrer" aria-label="Visit Soltech Africa website (opens in new tab)">soltech.africa →</a>
       </div>
 
       <div class="card">
         <h3>Sya Online Trading</h3>
         <p>E-commerce and online trading platform.</p>
-        <a href="https://syaonlinetrading.com" target="_blank">syaonlinetrading.com →</a>
+        <a href="https://syaonlinetrading.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Sya Online Trading website (opens in new tab)">syaonlinetrading.com →</a>
       </div>
     </div>
 
     <h2>Connect</h2>
-    <div class="socials">
-      <a href="https://linkedin.com/in/uncledevhq" target="_blank">LinkedIn</a>
-      <a href="https://x.com/" target="_blank">X (Twitter)</a>
-      <a href="https://facebook.com/" target="_blank">Facebook</a>
-      <a href="https://tiktok.com/" target="_blank">TikTok</a>
-    </div>
+    <nav class="socials" aria-label="Social media links">
+      <a href="https://linkedin.com/in/uncledevhq" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile (opens in new tab)">LinkedIn</a>
+      <a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit X (Twitter) profile (opens in new tab)">X (Twitter)</a>
+      <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Facebook profile (opens in new tab)">Facebook</a>
+      <a href="https://tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit TikTok profile (opens in new tab)">TikTok</a>
+    </nav>
 
+    </main>
     <footer>
-      © <span id="year"></span> Chomba Chanda
+      <p>© <span id="year"></span> Chomba Chanda</p>
     </footer>
   </div>
 
