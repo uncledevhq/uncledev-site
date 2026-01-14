@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chomba Chanda | Builder & CTO</title>
+
+  <!-- Custom Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --card: #020617;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 64px 24px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      margin-top: 56px;
+      font-size: 1.6rem;
+    }
+
+    p {
+      color: var(--muted);
+      max-width: 720px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .card a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .card a:hover {
+      text-decoration: underline;
+    }
+
+    .socials {
+      margin-top: 40px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .socials a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .socials a:hover {
+      color: var(--accent);
+    }
+
+    footer {
+      margin-top: 80px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Chomba Chanda</h1>
+    <p>
+      I’m a software engineer and CTO based in Zambia.  
+      I build scalable products, digital infrastructure, and platforms that solve real-world problems —
+      from fintech and agribusiness to government and commerce.
+    </p>
+
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="card">
+        <h3>PayNow</h3>
+        <p>Fintech platform for collecting mobile money payments via secure payment links.</p>
+        <a href="https://usepaynow.com" target="_blank">usepaynow.com →</a>
+      </div>
+
+      <div class="card">
+        <h3>Pictopus</h3>
+        <p>Creative and digital product focused on content, visuals, and automation.</p>
+        <a href="#" target="_blank">View project →</a>
+      </div>
+
+      <div class="card">
+        <h3>MentLoop</h3>
+        <p>Mentorship and growth platform connecting talent and opportunity.</p>
+        <a href="#" target="_blank">View project →</a>
+      </div>
+
+      <div class="card">
+        <h3>Panuka AgriBiz Hub</h3>
+        <p>Digital platform supporting agribusiness operations and market access.</p>
+        <a href="https://panukaagribizhub.com" target="_blank">panukaagribizhub.com →</a>
+      </div>
+
+      <div class="card">
+        <h3>Soltech Africa</h3>
+        <p>Technology and consulting solutions for African businesses.</p>
+        <a href="https://soltech.africa" target="_blank">soltech.africa →</a>
+      </div>
+
+      <div class="card">
+        <h3>Sya Online Trading</h3>
+        <p>E-commerce and online trading platform.</p>
+        <a href="https://syaonlinetrading.com" target="_blank">syaonlinetrading.com →</a>
+      </div>
+    </div>
+
+    <h2>Connect</h2>
+    <div class="socials">
+      <a href="https://linkedin.com/in/uncledevhq" target="_blank">LinkedIn</a>
+      <a href="https://x.com/" target="_blank">X (Twitter)</a>
+      <a href="https://facebook.com/" target="_blank">Facebook</a>
+      <a href="https://tiktok.com/" target="_blank">TikTok</a>
+    </div>
+
+    <footer>
+      © <span id="year"></span> Chomba Chanda
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
