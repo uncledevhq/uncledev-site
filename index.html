@@ -64,12 +64,48 @@
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .terminal-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.08;
+      font-family: 'Courier New', 'Monaco', monospace;
+      font-size: 12px;
+      color: #10b981;
+      padding: 40px;
+      white-space: pre-wrap;
+      overflow: hidden;
+      user-select: none;
+      line-height: 1.8;
+    }
+
+    .terminal-bg-content {
+      animation: scroll-up 60s linear infinite;
+    }
+
+    @keyframes scroll-up {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-50%);
+      }
     }
 
     .container {
       max-width: 900px;
       margin: 0 auto;
       padding: 64px 24px;
+      position: relative;
+      z-index: 1;
     }
 
     h1 {
@@ -95,10 +131,11 @@
     }
 
     .card {
-      background: var(--card);
+      background: rgba(2, 6, 23, 0.85);
       padding: 20px;
       border-radius: 12px;
       border: 1px solid rgba(255,255,255,0.05);
+      backdrop-filter: blur(2px);
     }
 
     .card a {
@@ -112,10 +149,144 @@
     }
 
     .card a:focus,
-    .socials a:focus {
+    .socials a:focus,
+    .fab:focus {
       outline: 2px solid var(--accent);
       outline-offset: 2px;
       border-radius: 4px;
+    }
+
+    .fab {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 28px;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      color: #10b981;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 12px;
+      border: 2px solid #10b981;
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.3),
+                  0 8px 32px rgba(0, 0, 0, 0.4),
+                  inset 0 1px 0 rgba(16, 185, 129, 0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      font-size: 0.9rem;
+      letter-spacing: 0.3px;
+      overflow: hidden;
+      font-family: 'Courier New', 'Monaco', monospace;
+    }
+
+    .fab::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, transparent 30%, rgba(16, 185, 129, 0.1) 50%, transparent 70%);
+      background-size: 200% 200%;
+      animation: scan 3s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes scan {
+      0% {
+        background-position: 0% 0%;
+      }
+      100% {
+        background-position: 200% 200%;
+      }
+    }
+
+    .fab:hover {
+      transform: translateY(-6px);
+      border-color: #34d399;
+      box-shadow: 0 0 30px rgba(16, 185, 129, 0.5),
+                  0 12px 48px rgba(0, 0, 0, 0.5),
+                  inset 0 1px 0 rgba(16, 185, 129, 0.2);
+      text-decoration: none;
+      color: #34d399;
+    }
+
+    .fab:active {
+      transform: translateY(-3px);
+    }
+
+    .fab-icon {
+      font-size: 1.3rem;
+      line-height: 1;
+      animation: glow 2s ease-in-out infinite alternate;
+      filter: drop-shadow(0 0 4px rgba(16, 185, 129, 0.6));
+    }
+
+    @keyframes glow {
+      from {
+        filter: drop-shadow(0 0 4px rgba(16, 185, 129, 0.6));
+      }
+      to {
+        filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.9));
+      }
+    }
+
+    .fab-text {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .fab-prompt {
+      color: #34d399;
+      opacity: 0.7;
+    }
+
+    .fab-command {
+      color: #10b981;
+    }
+
+    .fab-text::after {
+      content: '█';
+      margin-left: 2px;
+      color: #10b981;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 50% {
+        opacity: 1;
+      }
+      51%, 100% {
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .fab {
+        bottom: 20px;
+        right: 20px;
+        padding: 14px 20px;
+        font-size: 0.8rem;
+        gap: 8px;
+      }
+      
+      .fab-text .fab-command {
+        display: none;
+      }
+      
+      .fab-text::before {
+        content: 'connect';
+        color: #10b981;
+      }
+      
+      .fab-text::after {
+        margin-left: 0;
+      }
     }
 
     .skip-link {
@@ -159,12 +330,149 @@
   </style>
 </head>
 <body>
+  <div class="terminal-bg">
+    <div class="terminal-bg-content">
+$ npm install --save-dev @types/node
+$ git clone https://github.com/uncledevhq/project.git
+$ cd project && npm install
+$ npm run dev
+
+> Building for production...
+✓ Compiled successfully
+✓ 156 modules transformed
+✓ Assets optimized
+
+const express = require('express');
+const app = express();
+
+app.get('/api/status', (req, res) => {
+  res.json({ status: 'online', version: '1.0.0' });
+});
+
+app.listen(3000, () => {
+  console.log('Server running on port 3000');
+});
+
+$ docker build -t myapp .
+$ docker run -p 3000:3000 myapp
+
+[INFO] Starting application...
+[INFO] Database connected
+[INFO] Redis cache initialized
+[INFO] Server listening on port 3000
+
+function fibonacci(n) {
+  if (n <= 1) return n;
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+console.log(fibonacci(10)); // 55
+
+$ kubectl apply -f deployment.yaml
+$ kubectl get pods
+$ kubectl logs -f app-pod
+
+SELECT * FROM users WHERE active = true;
+UPDATE projects SET status = 'deployed' WHERE id = 1;
+INSERT INTO logs (message, timestamp) VALUES ('Deployed', NOW());
+
+$ git add .
+$ git commit -m "feat: add terminal background effect"
+$ git push origin main
+
+[2024-01-15 10:30:45] INFO: Application started
+[2024-01-15 10:30:46] INFO: Routes registered
+[2024-01-15 10:30:47] INFO: Middleware loaded
+[2024-01-15 10:30:48] INFO: Database migrations completed
+
+const api = async () => {
+  const response = await fetch('/api/data');
+  const data = await response.json();
+  return data;
+};
+
+$ yarn build
+$ yarn test
+$ yarn deploy
+
+> Running tests...
+✓ 156 tests passed
+✓ Coverage: 92.5%
+
+$ npm install --save-dev @types/node
+$ git clone https://github.com/uncledevhq/project.git
+$ cd project && npm install
+$ npm run dev
+
+> Building for production...
+✓ Compiled successfully
+✓ 156 modules transformed
+✓ Assets optimized
+
+const express = require('express');
+const app = express();
+
+app.get('/api/status', (req, res) => {
+  res.json({ status: 'online', version: '1.0.0' });
+});
+
+app.listen(3000, () => {
+  console.log('Server running on port 3000');
+});
+
+$ docker build -t myapp .
+$ docker run -p 3000:3000 myapp
+
+[INFO] Starting application...
+[INFO] Database connected
+[INFO] Redis cache initialized
+[INFO] Server listening on port 3000
+
+function fibonacci(n) {
+  if (n <= 1) return n;
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+console.log(fibonacci(10)); // 55
+
+$ kubectl apply -f deployment.yaml
+$ kubectl get pods
+$ kubectl logs -f app-pod
+
+SELECT * FROM users WHERE active = true;
+UPDATE projects SET status = 'deployed' WHERE id = 1;
+INSERT INTO logs (message, timestamp) VALUES ('Deployed', NOW());
+
+$ git add .
+$ git commit -m "feat: add terminal background effect"
+$ git push origin main
+
+[2024-01-15 10:30:45] INFO: Application started
+[2024-01-15 10:30:46] INFO: Routes registered
+[2024-01-15 10:30:47] INFO: Middleware loaded
+[2024-01-15 10:30:48] INFO: Database migrations completed
+
+const api = async () => {
+  const response = await fetch('/api/data');
+  const data = await response.json();
+  return data;
+};
+
+$ yarn build
+$ yarn test
+$ yarn deploy
+
+> Running tests...
+✓ 156 tests passed
+✓ Coverage: 92.5%
+    </div>
+  </div>
   <a href="#main-content" class="skip-link">Skip to main content</a>
   <div class="container">
     <main id="main-content">
     <h1>Chomba Chanda</h1>
     <p>
-      I’m a software engineer and CTO based in Zambia.  
+      I'm a software engineer and CTO based in Zambia.  
       I build scalable products, digital infrastructure, and platforms that solve real-world problems —
       from fintech and agribusiness to government and commerce.
     </p>
@@ -222,6 +530,15 @@
       <p>© <span id="year"></span> Chomba Chanda</p>
     </footer>
   </div>
+
+  <a href="https://calendly.com/uncledevhq/hello" target="_blank" rel="noopener noreferrer" class="fab" aria-label="Schedule a meeting on Calendly (opens in new tab)">
+    <span class="fab-icon">▶</span>
+    <span class="fab-text">
+      <span class="fab-prompt">git commit -m "</span>
+      <span class="fab-command">let's connect</span>
+      <span class="fab-prompt">"</span>
+    </span>
+  </a>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
